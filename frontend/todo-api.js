@@ -17,7 +17,7 @@ function fetchTodos() {
       const todoList = document.getElementById("todo-list");
       data.message.forEach(todo => {
           const li = document.createElement("li");
-          li.textContent = todo.title;
+          li.innerHTML = `<div><div>${todo.title}</div> <div><button id="delete-todo">Delete</button></div> </div>`;
           todoList.appendChild(li);
       });
   })
@@ -50,5 +50,7 @@ if (todoForm) {
       .catch(error => console.error("Error adding todo:", error));
   });
 }
+
+const deleteButton = document.getElementById("delete-todo");
 
 document.addEventListener('DOMContentLoaded', fetchTodos);
